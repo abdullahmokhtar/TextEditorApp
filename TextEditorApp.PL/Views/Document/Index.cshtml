@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Document>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<a class="text-decoration-none" asp-action="Create">
+    <div class="d-flex justify-content-center align-items-center doc-card">
+        <p>+</p>
+    </div>
+</a>
+<span class="fw-bold ms-3">Blank Doc</span>
+<hr />
+<div class="row">
+    @foreach (Document doc in Model)
+    {
+        <div class="col-md-2">
+            <a class="text-decoration-none" asp-action="Edit" asp-route-id="@doc.Id">
+                <div class="d-flex justify-content-center align-items-center doc-card bg-light-blue">
+                    <p>📝</p>
+                </div>
+            </a>
+            <span class="fw-bold fs-6">@doc.Title @doc.CreatedAt.Year-@doc.CreatedAt.Month-@doc.CreatedAt.Day</span>
+        </div>
+    }
+</div>
+
+

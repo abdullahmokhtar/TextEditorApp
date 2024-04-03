@@ -1,0 +1,39 @@
+﻿@model Document
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> userManger
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group w-25">
+                <input asp-for="Title" placeholder="Title" class="form-control mb-3" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <textarea id="tiny" asp-for="Content" class="form-control my-3"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UserId" value="@userManger.GetUserId(User)" class="form-control" />
+
+            </div>
+            <div class="form-group d-flex my-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="ms-3 btn btn-danger">Delete</a>
+                <a class="btn btn-info mx-3" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

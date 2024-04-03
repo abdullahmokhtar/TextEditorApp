@@ -1,0 +1,44 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="~/images/signin-image.jpg" alt="sing up image"></figure>
+                <a asp-action="Register" class="signup-image-link">Create an account</a>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Login</h2>
+                <form asp-action="Login" method="POST" class="register-form">
+                    <div class="form-group">
+                        <label asp-for="Email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="email" asp-for="Email" placeholder="Your Email" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" asp-for="Password" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" asp-for="RememberMe" class="agree-term" />
+                        <label asp-for="RememberMe" class="label-agree-term"><span><span></span></span>Remember me</label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                    </div>
+                </form>
+                <div class="social-login">
+                    <span class="social-label">Or login with</span>
+                    <ul class="socials">
+                        <li><a href="https://www.facebook.com/abdullah.mokhtar.37/"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a asp-action="GoogleLogin"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
